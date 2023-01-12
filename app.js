@@ -12,6 +12,13 @@ taskList.addEventListener("click", taskListClickHandler);
 // Call getTasks() when the page loads
 getTasks();
 
+// Listen for keypress (enter)
+document.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    addNewTodo();
+  }
+});
+
 function addNewTodo() {
   // Get the task name from the input field
   const taskName = taskInput.value;
