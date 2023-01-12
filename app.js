@@ -20,16 +20,22 @@ function addNewTodo() {
   }
 
   const taskElement = document.createElement("li");
-  taskElement.classList.add("list-group-item");
+  taskElement.classList.add(
+    "list-group-item",
+    "d-flex",
+    "my-1",
+    "justify-content-between",
+    "align-items-center"
+  );
 
   taskElement.innerHTML = `
-    
+    <div>
       <input
         class="form-check-input"
         type="checkbox"
         id="task-checkbox"
       /> ${taskName}
-   
+   </div>
           
     <div class="float-end">
       <i class="bi bi-pen p-1 text-info icon" id="edit-task"></i>
@@ -126,13 +132,13 @@ function saveEditTask() {
 
   const newTask = task.querySelector("#task-name").value;
   task.innerHTML = `
-    
+    <div>
       <input
         class="form-check-input"
         type="checkbox"
         id="task-checkbox"
       /> ${newTask}
-    
+    </div>
           
     <div class="float-end">
       <i class="bi bi-pen p-1 text-info icon" id="edit-task"></i>
@@ -157,13 +163,13 @@ function cancelEditTask() {
   const task = this.parentElement.parentElement.parentElement;
 
   task.innerHTML = `
-    
+    <div>
       <input
         class="form-check-input"
         type="checkbox"
         id="task-checkbox"
       /> ${oldTaskName}
-    
+    </div>
           
     <div class="float-end">
       <i class="bi bi-pen p-1 text-info icon" id="edit-task"></i>
@@ -185,13 +191,11 @@ function updateDetails() {
   let completedTaskCount = 0;
 
   tasks.forEach((task) => {
-    if (task.classList.contains("task-completed")) {
+    if (task.querySelector("#task-checkbox").checked) {
       completedTaskCount++;
     }
   });
 
-  console.log("completedTaskCount", completedTaskCount);
-  // tasksLeft.innerText = `${tasks.length - completedTaskCount} tasks left`;
   tasksLeft.innerText = `${tasks.length - completedTaskCount} ${
     tasks.length - completedTaskCount === 1 ? "task" : "tasks"
   } left`;
@@ -233,16 +237,22 @@ function getTasks() {
 
   tasks.forEach((task) => {
     const taskElement = document.createElement("li");
-    taskElement.classList.add("list-group-item");
+    taskElement.classList.add(
+      "list-group-item",
+      "d-flex",
+      "my-1",
+      "justify-content-between",
+      "align-items-center"
+    );
 
     taskElement.innerHTML = `
-      
+      <div>
         <input
           class="form-check-input"
           type="checkbox"
           id="task-checkbox"
         /> ${task.name}
-      
+      </div>
             
       <div class="float-end">
         <i class="bi bi-pen p-1 text-info icon" id="edit-task"></i>
